@@ -97,7 +97,7 @@
                         </div> 
                         <div id="error" class="hide">
                             <div class="d-flex  justify-content-center" style="margin-top: 50px;">
-                                <span><p>Lorem ipsum dolor sit amet.</p></span>
+                                <span><p style="color: red;" ></p></span>
                             </div>
                           </div>
                        <div class="hide" id="textArea">
@@ -287,6 +287,8 @@
                 $("#error").show();
                 $("#error").css('margin-top', '50px')
                 $("#error").css('margin-left', '35px')
+                $("#error").css('margin-bottom', '5px')
+                $("#error").css('color', 'red')
                 $("#textArea").css('margin-top', '0px')                
                 $("#error").text('Please provide feedback...')
             }
