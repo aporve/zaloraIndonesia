@@ -95,10 +95,15 @@
                                 </table>
                             </ul>
                         </div> 
+                        <div id="error" class="hide">
+                            <div class="d-flex  justify-content-center" style="margin-top: 50px;">
+                                <span><p>Lorem ipsum dolor sit amet.</p></span>
+                            </div>
+                          </div>
                        <div class="hide" id="textArea">
-                        <div class="col-lg-12 d-flex justify-content-center" style="display: none;" >
-                            <textarea id="feedback" placeholder=" Masukan saran kamu disini.." class="w-75" name="text" cols="30" rows="4" style="resize: none; border: 2px solid #eee;"></textarea>
-                        </div>
+                            <div class="col-lg-12 d-flex justify-content-center" style="display: none;" >
+                                <textarea id="feedback" placeholder=" Masukan saran kamu disini.." class="w-75" name="text" cols="30" rows="4" style="resize: none; border: 2px solid #eee;"></textarea>
+                            </div>
                        </div>
 
                         <div class="hide" id="dropdown">
@@ -179,34 +184,114 @@
 
         function details() {
             submitDetails = document.getElementById('feedback').value;
-            data.feedback = feedback;
-            data.radioButtonValue = radioFeedback
-            data.submitDetails = submitDetails;
             textareaValue = document.getElementById('feedback').value;
-
-            var feedbackDetails = {}
-            var raw = JSON.stringify({
-                "details": {
-                "companyName": "ZALORA",
-                "feedbackEmoji": feedback,
-                "radioValue": radioFeedback,
-                "textareaValue" : textareaValue
-                }
-            });
-
-            document.getElementById('feedback').value = ''
-            $("#form").trigger("reset");
             
-            feedbackDetails.data = raw;
-            window.parent.postMessage(JSON.stringify({
-                event_code: 'ym-client-event', data: JSON.stringify({
-                    event: {
-                    code: "feedback",
-                    data: feedbackDetails,
-                
+            if((feedback =='good') && (textareaValue !== '')) {
+                $("#error").hide();
+                $("#textArea").css('margin-top', '50px')
+                data.feedback = feedback;
+                data.radioButtonValue = radioFeedback
+                data.submitDetails = submitDetails;
+           
+                console.log('Submit Details---->>', data);
+                var feedbackDetails = {}
+                var raw = JSON.stringify({
+                    "details": {
+                    "companyName": "ZALORA",
+                    "feedbackEmoji": feedback,
+                    "radioValue": radioFeedback,
+                    "textareaValue" : textareaValue
                     }
-                })
-            }), '*');
+                });
+
+                document.getElementById('feedback').value = ''
+                $("#form").trigger("reset");
+                
+                feedbackDetails.data = raw;
+                window.parent.postMessage(JSON.stringify({
+                    event_code: 'ym-client-event', data: JSON.stringify({
+                        event: {
+                        code: "feedback",
+                        data: feedbackDetails,
+                    
+                        }
+                    })
+                }), '*');
+
+            }
+            else if((feedback =='bad') && (radioFeedback !== 'Other Feedback')) {
+                $("#error").hide();
+                $("#textArea").css('margin-top', '50px')
+                data.feedback = feedback;
+                data.radioButtonValue = radioFeedback
+                data.submitDetails = submitDetails;
+            
+                console.log('Submit Details---->>',data);
+                var feedbackDetails = {}
+                var raw = JSON.stringify({
+                    "details": {
+                    "companyName": "ZALORA",
+                    "feedbackEmoji": feedback,
+                    "radioValue": radioFeedback,
+                    "textareaValue" : textareaValue
+                    }
+                });
+
+                document.getElementById('feedback').value = ''
+                $("#form").trigger("reset");
+                
+                feedbackDetails.data = raw;
+                window.parent.postMessage(JSON.stringify({
+                    event_code: 'ym-client-event', data: JSON.stringify({
+                        event: {
+                        code: "feedback",
+                        data: feedbackDetails,
+                    
+                        }
+                    })
+                }), '*');
+
+            }else if((feedback =='bad') && (radioFeedback == 'Other Feedback') && (textareaValue !== '')) {
+                $("#error").hide();
+                $("#textArea").css('margin-top', '50px')
+                data.feedback = feedback;
+                data.radioButtonValue = radioFeedback
+                data.submitDetails = submitDetails;
+            
+                console.log('Submit Details---->>',data);
+                var feedbackDetails =  {}
+                var raw = JSON.stringify({
+                    "details": {
+                    "companyName": "ZALORA",
+                    "feedbackEmoji": feedback,
+                    "radioValue": radioFeedback,
+                    "textareaValue" : textareaValue
+                    }
+                });
+
+                document.getElementById('feedback').value = ''
+                $("#form").trigger("reset");
+                
+                feedbackDetails.data = raw;
+                window.parent.postMessage(JSON.stringify({
+                    event_code: 'ym-client-event', data: JSON.stringify({
+                        event: {
+                        code: "feedback",
+                        data: feedbackDetails,
+                    
+                        }
+                    })
+                }), '*');
+
+            }else {
+                $("#error").show();
+                $("#error").css('margin-top', '50px')
+                $("#error").css('margin-left', '35px')
+                $("#textArea").css('margin-top', '0px')                
+                $("#error").text('Please provide feedback...')
+            }
+
+
 
         }
 
