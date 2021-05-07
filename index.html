@@ -124,8 +124,6 @@
                             <label for="Other Feedback">Alasan lainnya</label><br>
                         </div>
 
-                        <div></div>
-
                         <div id="submitBtn" style="display: none;">
                             <div  class="col-lg-12 d-flex justify-content-center my-2" >
                                 <button id="submit" class="btn1 w-75" type="button" onclick="return details()" style="font-weight: bold;">Isi</button>
@@ -148,6 +146,7 @@
         let feedback2;
         let radioFeedback;
         let textareaValue ;
+        let reason = document.getElementsByName("reason");
 
 
         function good() {
@@ -196,7 +195,7 @@
                 data.radioButtonValue = radioFeedback
                 data.submitDetails = submitDetails;
            
-                console.log('Submit Details---->>', data);
+                console.log('Submit Details---->>', );
                 var feedbackDetails = {}
                 var raw = JSON.stringify({
                     "details": {
@@ -222,7 +221,7 @@
                 }), '*');
 
             }
-            else if((feedback =='bad') && (radioFeedback !== 'Other Feedback')) {
+            else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && (reason[0].checked == true)) {
                 $("#error").hide();
                 $("#textArea").css('margin-top', '50px')
                 data.feedback = feedback;
@@ -286,6 +285,14 @@
                     })
                 }), '*');
 
+            }else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && ((reason[0].checked == false) || (reason[1].checked == false) || (reason[2].checked == false) || (reason[3].checked == false)|| (reason[4].checked == false)|| (reason[5].checked == false))) {
+                $("#error").show();
+                $("#error").css('margin-top', '20px')
+                $("#error").css('margin-left', '35px')
+                $("#error").css('margin-bottom', '5px')
+                $("#error").css('color', 'red')
+                $("#error").text('Mohon berikan umpan balik...')
+                
             }else {
                 $("#error").show();
                 $("#error").css('margin-top', '50px')
