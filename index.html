@@ -75,40 +75,41 @@
                     <form class="show" action="#" id="form">
                         <div class="col-lg-12 m-0 pt-1" id="emotican">
                             <ul class="my-5 p-0" style="width: 100%; display: inline-block; list-style: none; margin: 50px 0 0 0;" >
-                                <table>
+                                <table class="m-0" style="width: 100%; border-collapse: inherit;">
                                     <tr>
-                                        <th>
-                                            <p class="mx-3" style="font-size: 5rem; cursor: pointer;" onclick="good()">😄</p>
+                                        <th style="width: 50%;">
+                                            <p style="font-size: 5rem; cursor: pointer;" class="d-flex justify-content-center" onclick="good()">😄</p>
                                         </th>
-                                        <th>
-                                            <p class="mx-3" style="font-size: 5rem; cursor: pointer;" onclick="bad()">😔</p>
+                                        <th style="width: 50%;">
+                                            <p style="font-size: 5rem; cursor: pointer;" class="d-flex justify-content-center" onclick="bad()">😔</p>
                                         </th>
                                     </tr>
-                                    <tr>
-                                        <td class="d-flex justify-content-center">
-                                            Bagus
+                                    <tr style="width: 100%;">
+                                        <td style="width: 50%;">
+                                           <p class="d-flex justify-content-center">Bagus</p>
                                         </td>
-                                        <td>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; Buruk
+                                        <td style="width: 50%;">
+                                            <p class="d-flex justify-content-center">Buruk</p>
                                         </td>
                                     </tr>
                                 </table>
                             </ul>
                         </div> 
-                        <div id="error" class="hide">
-                            <div class="d-flex  justify-content-center" style="margin-top: 50px;">
-                                <span><p style="color: red;" ></p></span>
-                            </div>
-                          </div>
+                      <div id="error" class="hide">
+                        <div class="d-flex  justify-content-center" style="margin-top: 50px;">
+                            <span><p></p></span>
+                        </div>
+                      </div>
+                        
                        <div class="hide" id="textArea">
                             <div class="col-lg-12 d-flex justify-content-center" style="display: none;" >
-                                <textarea id="feedback" placeholder=" Masukan saran kamu disini.." class="w-75" name="text" cols="30" rows="4" style="resize: none; border: 2px solid #eee;"></textarea>
+                                <textarea id="feedback" placeholder="  Masukan saran kamu disini.." class="w-75" name="text" cols="30" rows="4" style="resize: none; border: 2px solid #eee;"></textarea>
                             </div>
                        </div>
 
                         <div class="hide" id="dropdown">
                             
-                            <p>Silahkan pilih alasan kamu:</p>
+                            <p>Silahkan pilih:</p>
                             <input type="radio" id="F1" name="reason" onclick="triggerText('F1')" value="The agent need to be more helpful">
                             <label for="The agent need to be more helpful">Agent harus lebih membantu</label><br>
                             <input type="radio" id="F2" name="reason" onclick="triggerText('F2')" value="The agent Need to improve the product knowledge">
@@ -122,6 +123,8 @@
                             <input type="radio" id="F6" name="reason" onclick="triggerText('F6')" value="Other Feedback">
                             <label for="Other Feedback">Alasan lainnya</label><br>
                         </div>
+
+                        <div></div>
 
                         <div id="submitBtn" style="display: none;">
                             <div  class="col-lg-12 d-flex justify-content-center my-2" >
