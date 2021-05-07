@@ -221,7 +221,7 @@
                 }), '*');
 
             }
-            else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && (reason[0].checked == true)) {
+            else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && ((reason[0].checked == true) || (reason[1].checked == true) || (reason[2].checked == true) || (reason[3].checked == true)|| (reason[4].checked == true))) {
                 $("#error").hide();
                 $("#textArea").css('margin-top', '50px')
                 data.feedback = feedback;
@@ -287,7 +287,7 @@
 
             }else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && ((reason[0].checked == false) || (reason[1].checked == false) || (reason[2].checked == false) || (reason[3].checked == false)|| (reason[4].checked == false)|| (reason[5].checked == false))) {
                 $("#error").show();
-                $("#error").css('margin-top', '20px')
+                $("#error").css('margin-top', '15px')
                 $("#error").css('margin-left', '35px')
                 $("#error").css('margin-bottom', '5px')
                 $("#error").css('color', 'red')
